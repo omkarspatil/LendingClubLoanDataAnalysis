@@ -1,0 +1,60 @@
+
+******** Packages ********
+The complete source code is written in Python2.7
+We have used the following Python packages:
+numpy, pandas, scikit-learn, matplotlib, scipy
+
+The above packages can be installed using these commands:
+pip install numpy
+pip install pandas
+pip install scipy
+pip install scikit-learn
+pip install matplotlib
+
+If using OSX, it's recommended to use "--ignore-installed six" as a suffix to all the above pip install commands.
+
+******** Source Code - Module Description ********
+split.py : This module reads the preprocessed dataset and creates a training and testing split. By default, we select
+           10,000 samples from the preprocessed dataset of 20,000 samples and generate 75/25 training-testing split data.
+           The data is saved in the following files:
+           "training_split_x.csv"
+           "testing_split_x.csv"
+           "training_split_y.csv"
+           "testing_split_y.csv"
+
+pca_new.py : For data visualisation. This module has the code for generating both pca and tsne plots.
+
+recursive_feature_selection.py : this module has the code for feature selection.
+
+crossvalidation.py : For running k-fold crossvalidation on the testing data set and tuning the parameters.
+
+train_and_plot.py : This module has the code for training different models using the best parameter computed after
+cross validation
+
+isolationforest.py: This module has the code for anomaly detection and plotting.
+
+******** Observations ********
+polynomial kernel takes really long time to fit (on degree 2,3,4) and therefore it has been commented out in crossvalidation,
+plot modules.
+
+
+******** Running the Code ********
+## Data-Visualisation
+$ python pca_new.py
+
+## Running crossvalidation
+    $ python crossvalidation.py
+(this module first calls recursive_feature_selection.py to select the top 7 features. 7 is passed a parameter and can be
+changed as we wish. Then k-fold cross validation is run where the value of k is taken as 5. Again, 5 is passed a paramter
+to the function and can be changed. )
+
+## Running Anomaly detection
+    $ python isolationforest.py
+
+## Training and plotting curves
+    $ python train_and_plot.py
+
+
+## Generating ROC curves
+$ python roc.py
+
